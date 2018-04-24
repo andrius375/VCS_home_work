@@ -27,6 +27,7 @@ Jei žmonės norėtų panašų garsą atkurti sausumoje, tikriausiai reikėtų p
             Console.WriteLine("1. Parodyti originalų tekstą;");
             Console.WriteLine("2. Pašalinti žodį iš teksto;");
             Console.WriteLine("3. Kiek elementų turi tekstas?");
+            Console.WriteLine("4. Kiek pasikartojančių žodžių turi tekstas?");
             // Console.ReadKey();
 
             int chosenMenu = int.Parse(Console.ReadLine());
@@ -44,7 +45,11 @@ Jei žmonės norėtų panašų garsą atkurti sausumoje, tikriausiai reikėtų p
                     break;
                 case 3:
                     int wordCount = text.Count();
-                    Console.WriteLine("Tekstas turi " + wordCount + " elemntu.");
+                    Console.WriteLine("Tekstas turi " + wordCount + " elementu.");
+                    Console.ReadKey();
+                    break;
+                case 4:
+                    Console.WriteLine("Tekstas turi " + countWords(text) + " žodžių.");
                     Console.ReadKey();
                     break;
                 default:
@@ -63,6 +68,21 @@ Jei žmonės norėtų panašų garsą atkurti sausumoje, tikriausiai reikėtų p
             Console.WriteLine("\n============================================");
 
             Console.ReadKey();
+        }
+        static string countWords(List<string> text)
+        {
+            int dublicatesWrodsInText = 0;
+            for (int i = 0; i < text.Count; i++)
+            {
+                for (int j = i + 1; j < text.Count; j++)
+                {
+                    if (text[i] == text[j] && i != j)
+                    {
+                        dublicatesWrodsInText++;
+                    }
+                }
+            }
+            return dublicatesWrodsInText.ToString();
         }
 
     }
